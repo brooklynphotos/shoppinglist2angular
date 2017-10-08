@@ -1,0 +1,38 @@
+<div>
+  <md-toolbar color="primary">
+    <span><md-icon>mood</md-icon></span>
+
+    <span>Yay, Material in Angular 2!</span>
+
+    <button md-icon-button [md-menu-trigger-for]="menu">
+      <md-icon>more_vert</md-icon>
+    </button>
+  </md-toolbar>
+  <md-menu x-position="before" #menu="mdMenu">
+    <button md-menu-item>Shopping List</button>
+    <button md-menu-item>Admin</button>
+  </md-menu>
+
+  <md-card>
+    <md-tab-group [selectedIndex]="2">
+      <md-tab label="Breakfast">
+        <h3>Breakfast option</h3>
+        <p>Toast /w peanut butter</p>
+      </md-tab>
+      <md-tab label="Lunch">
+        <h3>Lunch option</h3>
+        <p>Club sandwich</p>
+      </md-tab>
+      <md-tab label="Dinner">
+        <h3>Dinner option</h3>
+        <p>Lasagna</p>
+      </md-tab>
+    </md-tab-group>
+  </md-card>
+
+  <span class="done">
+    <button md-fab>
+      <md-icon>check circle</md-icon>
+    </button>
+  </span>
+</div>

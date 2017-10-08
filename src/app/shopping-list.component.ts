@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { GridOptions } from 'ag-grid/main';
 
 import {ShoppingListService} from './shopping-list.service';
 import {Item} from './shopping-list.item';
+import {GridMoneyComponent} from './grid-money/grid-money.component'
 
 @Component({
   selector: 'shopping-list',
@@ -13,18 +15,33 @@ export class ShoppingListComponent implements OnInit {
   items: Item[] = [];
   errorMessage: string;
 
-  constructor(private listSvc: ShoppingListService){}
+  private gridOptions: GridOptions;
 
-  getItems(){
-    this.listSvc.getShoppingList()
-                .subscribe(
-                  items=> this.items = items,
-                  error=>this.errorMessage = <any>error
-                )
+  constructor(private listSvc: ShoppingListService){
+    this.gridOptions = <GridOptions>{
+        onGridReady: () => {
+            this.gridOptions.api.sizeColumnsToFit();
+            this.listSvc.getShoppingList()
+                        .subscribe(
+                          rowData=> {
+                            this.gridOptions.api.setRowData(rowData);
+                          },
+                          error=>this.errorMessage = <any>error
+                        )
+                }
+    };
+    this.gridOptions.columnDefs = [
+        {headerName: "Name", field: "name"},
+        {headerName: "Quantity", field: "quantity"},
+        {
+          headerName: "Price", 
+          field: "price.value",
+          cellRendererFramework: GridMoneyComponent
+        }
+    ];
   }
 
   ngOnInit() {
-    this.getItems();
   }
 
 }
