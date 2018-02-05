@@ -9,27 +9,14 @@ import { Shop } from './shop';
 
 @Injectable()
 export class ShopService {
-  API_BASE = '/api/companies';
+  API_BASE = '/api/shop';
 
   constructor(private http: Http) { }
 
   loadShops(): Observable<Shop[]> {
-    return Observable.of([{
-      label: 'Whole Foods',
-      id: 1
-    }, {
-      label: 'WF 365',
-      id: 2
-    }, {
-      label: 'Trader Joe\'s',
-      id: 3
-    }, {
-      label: 'Stop & Shop',
-      id: 4
-    }]);
-    // return this.http.get(`${this.API_BASE}/company`)
-    // .map(data => data.json())
-    // .catch(this.errorHandler);
+    return this.http.get(`${this.API_BASE}/list`)
+    .map(data => data.json())
+    .catch(this.errorHandler);
   }
 
   errorHandler(error: any): any {
