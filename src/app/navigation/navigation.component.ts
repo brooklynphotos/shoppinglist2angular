@@ -1,27 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '../shared/store';
+import { Shop } from '../shop/shop';
+import { ShopService } from '../shop/shop.service';
 
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss']
 })
-export class NavigationComponent {
-  stores: Store[] = [{
-    label: 'Whole Foods',
-    id: 1
-  }, {
-    label: 'WF 365',
-    id: 2
-  }, {
-    label: 'Trader Joe\'s',
-    id: 3
-  }, {
-    label: 'Stop & Shop',
-    id: 4
-  }];
+export class NavigationComponent implements OnInit {
+  shops: Shop[];
+  errMsg: string;
 
-  select(store: Store) {
+  constructor(private shopService: ShopService) {}
+
+  ngOnInit() {
+    this.loadStores();
+  }
+
+  loadStores(): void {
+    this.shopService.loadShops().subscribe(
+      shops => this.shops = shops,
+      errMsg => this.errMsg
+    );
+  }
+
+  select(store: Shop): void {
     console.log(store.id);
   }
 
