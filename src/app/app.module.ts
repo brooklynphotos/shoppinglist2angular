@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { MatToolbarModule, MatIconModule, MatMenuModule, MatCardModule, MatTabsModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { ShoppingListService } from './shopping-list.service';
@@ -22,7 +23,12 @@ import { NavigationComponent } from './navigation/navigation.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatMenuModule,
+    MatCardModule,
+    MatTabsModule
   ],
   providers: [
     ShoppingListService
