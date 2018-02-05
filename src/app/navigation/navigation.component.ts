@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MdTabBody, MdTab} from '@angular/material';
+import {MatTabBody, MatTab} from '@angular/material';
 
 @Component({
   selector: 'navigation',
