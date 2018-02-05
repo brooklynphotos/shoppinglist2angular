@@ -1,38 +1,19 @@
 <div>
   <mat-toolbar color="primary">
-    <span><mat-icon>mood</mat-icon></span>
+    <span><mat-icon>shopping cart</mat-icon></span>
 
-    <span>Yay, Material in Angular 2!</span>
+    <span>G-Man's List</span>
 
     <button mat-icon-button [mat-menu-trigger-for]="menu">
       <mat-icon>more_vert</mat-icon>
     </button>
+
+    <mat-button-toggle>Done</mat-button-toggle>
   </mat-toolbar>
   <mat-menu x-position="before" #menu="matMenu">
-    <button mat-menu-item>Shopping List</button>
-    <button mat-menu-item>Admin</button>
+    <button mat-menu-item>Whole Foods</button>
+    <button mat-menu-item>WF 365</button>
+    <button mat-menu-item>Trader Joe's</button>
+    <button mat-menu-item>Stop &amp; Shop</button>
   </mat-menu>
-
-  <mat-card>
-    <mat-tab-group [selectedIndex]="2">
-      <mat-tab label="Breakfast">
-        <h3>Breakfast option</h3>
-        <p>Toast /w peanut butter</p>
-      </mat-tab>
-      <mat-tab label="Lunch">
-        <h3>Lunch option</h3>
-        <p>Club sandwich</p>
-      </mat-tab>
-      <mat-tab label="Dinner">
-        <h3>Dinner option</h3>
-        <p>Lasagna</p>
-      </mat-tab>
-    </mat-tab-group>
-  </mat-card>
-
-  <span class="done">
-    <button mat-fab>
-      <mat-icon>check circle</mat-icon>
-    </button>
-  </span>
 </div>

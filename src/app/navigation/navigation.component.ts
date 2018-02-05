@@ -1,16 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {MatTabBody, MatTab} from '@angular/material';
 
 @Component({
-  selector: 'navigation',
+  selector: 'app-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss']
 })
-export class NavigationComponent implements OnInit {
+export class NavigationComponent {
 
-  constructor() { }
-
-  ngOnInit() {
-  }
 
 }
