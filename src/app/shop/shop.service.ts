@@ -6,6 +6,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/of';
 
 import { Shop } from './shop';
+import Utils from '../shared/Utils';
 
 @Injectable()
 export class ShopService {
@@ -15,7 +16,7 @@ export class ShopService {
 
   loadShops(): Observable<Shop[]> {
     return this.http.get(`${this.API_BASE}/list`)
-    .map(data => data.json())
+    .map(Utils.extractData)
     .catch(this.errorHandler);
   }
 

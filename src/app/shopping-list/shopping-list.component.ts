@@ -11,7 +11,7 @@ import {GridMoneyComponent} from '../grid-money/grid-money.component';
   styleUrls: ['./shopping-list.component.scss']
 })
 export class ShoppingListComponent implements OnInit {
-  displayedColumns = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns = ['priority', 'name', 'section', 'quantity', 'note'];
   dataSource = new MatTableDataSource<Item>([]);
   errMsg: string;
 

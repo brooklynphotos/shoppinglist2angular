@@ -6,44 +6,18 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/of';
 
 import {Item} from './shopping-list.item';
+import Utils from '../shared/Utils';
 
 @Injectable()
 export class ShoppingListService {
-  private readonly listUrl = '/api/shopping/list';
+  private readonly listUrl = '/api/shopping/activelist';
 
   constructor(private http: Http) { }
 
   getShoppingList(): Observable<Item[]> {
-    const items: Item[] = [{
-      id: 1,
-      name: 'name',
-      frequency: 2,
-      priority: 1,
-      lastDateBought: new Date(),
-      quantity: 2,
-      location: {
-        id: 2,
-        shopId: 2,
-        section: 'b'
-      },
-      description: "a",
-      note: "b",
-      favorite: false,
-      price: {
-        value: 2.99,
-        unit: 'pound'
-      },
-      lastUsed: new Date()
-    }];
-    return Observable.of(items);
-    // return this.http.get(this.listUrl)
-    //                 .map(this.extractData)
-    //                 .catch(this.handleError);
-  }
-
-  private extractData(res: Response) {
-    const body = res.json();
-    return body.data || {};
+    return this.http.get(this.listUrl)
+                    .map(Utils.extractData)
+                    .catch(this.handleError);
   }
 
   private handleError (error: Response | any) {
